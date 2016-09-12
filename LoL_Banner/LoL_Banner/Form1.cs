@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,22 @@ namespace LoL_Banner
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process LoL = new Process();
+                LoL.StartInfo.FileName = "C:\\Riot Games\\League of Legends\\lol.launcher.admin.exe";
+                LoL.StartInfo.WorkingDirectory = "C:\\Riot Games\\League of Legends";
+                LoL.EnableRaisingEvents = true;
+                LoL.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to launch LoL");
+            }
         }
     }
 }
